@@ -3,56 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Training bot</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-        .button-89 {
-            --b: 3px;   /* border thickness */
-            --s: .45em; /* size of the corner */
-            --color: #fff;
-            margin: 5px;
-            width: auto;
-            padding: calc(.5em + var(--s)) calc(.9em + var(--s));
-            color: var(--color);
-            --_p: var(--s);
-            background:
-              conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
-              var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
-            transition: .3s linear, color 0s, background-color 0s;
-            outline: var(--b) solid #0000;
-            outline-offset: .6em;
-            font-size: 26px;
-            font-family: "Roboto", sans-serif;
-            border: 0;
-          
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-          }
-          
-          .button-89:hover,
-          .button-89:focus-visible{
-            --_p: 0px;
-          }
-          
-          .button-89:active {
-            background: var(--color);
-            color: #111;
-          }
-        body{
-            background: #373737;
-        }
-        .img_cont{
-            margin-top: 5%;
-            margin-left: -0.4%;
-            text-align: center;
-        }
-        .content{
-            margin-top: 3%;
-            color: #fff;
-            text-align: center;
-            font-size: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="./static/styles/base.css">
 </head>
 <body>
     <div style="text-align: center;">

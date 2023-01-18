@@ -8,7 +8,7 @@ def home_page(request):
 
 
 def users_page(request):
-    cards = User.objects.all().order_by('id')
+    cards = UserBot.objects.all().order_by('id')
     page_num = request.GET.get('page', 1)
     paginator = Paginator(cards, USERS_ON_PAGE)
 
