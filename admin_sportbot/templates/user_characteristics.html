@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <div class="content">
+        <p>Имя пользователя: {{ user.username }}</p>
+        <h1>{{user.first_name}}</h1>
+        <p>Возраст: {{user.age}}</p>
+        <p>Вес: {{user.weight}}</p>
+        <p>Рост: {{user.height}}</p>
+        <p>Пол: {{user.gender}}</p>
+        <p>Уровень: {{user.lvl}}</p>
+        <p>Цель: {{user.training_goal}}</p>
+        <p>Место: {{user.place}}</p>
+        <p>Дневник тренировок: </p>
+    </div>
+    
+</body>
+{% endblock %}
