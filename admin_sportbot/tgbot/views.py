@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from tgbot.models import User
+from tgbot.models import UserBot
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 # Create your views here.
 USERS_ON_PAGE = 20
