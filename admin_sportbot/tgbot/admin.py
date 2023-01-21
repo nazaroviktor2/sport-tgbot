@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserChangeForm, UserCreationForm, AdminPas
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.admin import UserAdmin
 
-from tgbot.models import Place, Training, UserBot, Dnevnik
+from tgbot.models import Place, Training, User, Dnevnik
 
 
 # class CustomAdmin(UserAdmin):
@@ -51,4 +51,4 @@ from tgbot.models import Place, Training, UserBot, Dnevnik
 admin.site.register(Place)
 admin.site.register(Training)
 admin.site.register(Dnevnik)
-admin.site.register(UserBot)
+admin.site.register(User)

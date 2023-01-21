@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
 <link rel="stylesheet" href="./static/styles/home.css">
 <body>
-    <form style="text-align:center;" action="" method="get">
+    <form style="text-align:center;"  name="add_training" method="post"  >
+        {% csrf_token %}
         <p>Введите название упражнения: </p>
         <input style="width: 30%; height: 30px;font-size: 24px; margin-top: 1%;" type="text">
         <p>Введите ссылку на упражнение: </p>
@@ -56,7 +57,7 @@
             <option value="11">Кардио</option>
         </select>
         <div style="text-align: center; margin-top: 1%;">
-            <button class="button-89">Отправить</button>
+            <button class="button-89" type="submit">Отправить</button>
         </div>
     </form>
 
