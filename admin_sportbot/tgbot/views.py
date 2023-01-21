@@ -1,23 +1,45 @@
 from django.shortcuts import render, get_object_or_404
-from tgbot.models import User, Dnevnik
+from tgbot.models import User, Dnevnik, Place
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
 USERS_ON_PAGE = 20
 
+muscle_groups = {
+    1: "Спина",
+    2: "Грудь",
+    3: "Ноги",
+    4: "Руки",
+    5: "Бицепс",
+    6: "Трицепс",
+    7: "Трапеции",
+    8: "Плечи",
+    9: "Пресс",
+    10: "Разминка",
+    11: "Функциональная",
+    12: "Кардио"
+}
+
+gender = {
+    "M": "Мужской", "F": "Женский", "M/F": "М/Ж"
+}
+
 
 def home_page(request):
     return render(request, "index.html")
 
+
 def add_training(request):
+    place = (Place.objects.all())
 
+    if request.method == "GET":
+        pass
 
-    if request.GET:
-        return render(request, "add_training.html")
     else:
-        print(1)
         print(request.POST)
-        return render(request, "add_training.html")
+    return render(request, "add_training.html", {"places": place, "muscle_groups": muscle_groups,
+                                                 "gender": gender})
+
 def users_page(request):
     cards = User.objects.all().order_by('id')
     page_num = request.GET.get('page', 1)
@@ -39,6 +61,5 @@ def users_page(request):
 def about_user(request):
     user = get_object_or_404(User, id=request.GET.get("id"))
     dnevniks = Dnevnik.objects.filter(user=request.GET.get("id")).order_by('-id')
-    print(dnevniks)
-    print(dnevniks[0].trainings.all())
+
     return render(request, "user_characteristics.html", {"user": user, "dnevniks": dnevniks})
