@@ -4,31 +4,31 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
 <link rel="stylesheet" href="./static/styles/home.css">
 <body>
-    <form style="text-align:center;"  name="add_training" method="post"  >
+    <form style="text-align:center;"  name="add_training" method="post">
         {% csrf_token %}
         <p>Введите название упражнения: </p>
-        <input style="width: 30%; height: 30px;font-size: 24px; margin-top: 1%;" type="text">
+        <input  required style="width: 30%; height: 30px;font-size: 24px; margin-top: 1%;" name="name" type="text">
         <p>Введите ссылку на упражнение: </p>
-        <input style="width: 30%; height: 30px; margin-top: 1%;" type="text">
+        <input required style="width: 30%; height: 30px; margin-top: 1%;" name="description" type="text">
         <div class="rows">
             <label>Выберите уровень: </label> 
         </div>
-        <select name="user_lvl" id="user_lvl" multiple required="required">
+        <select name="user_lvl" id="user_lvl" multiple required>
             <option value="1">1</option>
             <option value="2">2</option>
         </select>
         <div class="rows">
             <label>Выберите пол: </label>
         </div>
-        <select name="user_gender" id="user_gender" multiple required="required">
-            <option value="1">М</option>
-            <option value="2">Ж</option>
-            <option value="3">М/Ж</option>
+        <select name="user_gender" id="user_gender" multiple required>
+     {% for val, name in  gender.items %}
+            <option value="{{ val }}">{{ name }}</option>
+            {% endfor %}
         </select>
         <div class="rows">
             <label>Выберите тип тренировки: </label>
         </div>
-        <select name="user_type_training" id="user_type_training" multiple required="required">
+        <select name="user_type_training" id="user_type_training" multiple required>
             <option value="1">Быстрая</option>
             <option value="2">Персональная</option>
         </select>
@@ -36,25 +36,19 @@
             <label>Выберите место: </label>
         </div>
         <select name="places" id="places" multiple required="required">
-            <option value="1">Тренажерный Зал</option>
-            <option value="2">Спортивная площадка на улице</option>
-            <option value="3">Дом</option>
+            {% if places %}
+            {% for place in places %}
+            <option value="{{ place.id }}"> {{ place.name }}</option>
+            {% endfor %}
+            {% endif %}
         </select>
         <div class="rows">
             <label>Выберите группу мышц: </label>
         </div>
-        <select name="user_muscles" id="user_muscles" multiple required="required">
-            <option value="1">Спина</option>
-            <option value="2">Ноги</option>
-            <option value="3">Бицепс</option>
-            <option value="4">Трицепс</option>
-            <option value="5">Грудь</option>
-            <option value="6">Трапеции</option>
-            <option value="7">Плечи</option>
-            <option value="8">Пресс</option>
-            <option value="9">Разминка</option>
-            <option value="10">Функциональная</option>
-            <option value="11">Кардио</option>
+        <select name="user_muscles" id="user_muscles" multiple required>
+                {% for val, name in  muscle_groups.items %}
+            <option value="{{ val }}">{{ name }}</option>
+            {% endfor %}
         </select>
         <div style="text-align: center; margin-top: 1%;">
             <button class="button-89" type="submit">Отправить</button>
