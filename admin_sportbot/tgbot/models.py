@@ -38,23 +38,24 @@ class Training(models.Model):
         return self.name
 
 
-class UserBot(models.Model):
+class User(models.Model):
     id = models.IntegerField(primary_key=True, null=False)
     name = models.CharField(max_length=100)
     age = models.IntegerField(default=None, null=True, blank=True)
-    weight = models.DecimalField(default=None, decimal_places=2, max_digits=4, null=True, blank=True)
-    height = models.DecimalField(default=None, decimal_places=2, max_digits=4, null=True, blank=True)
+    weight = models.DecimalField(default=None, decimal_places=2, max_digits=5, null=True, blank=True)
+    height = models.DecimalField(default=None, decimal_places=2, max_digits=5, null=True, blank=True)
     gender = models.CharField(default=None, choices=[("M", "Мужской"), ("F", "Женский"), ("M/F", "М/Ж")],
                               max_length=3, null=True, blank=True)
     lvl = models.IntegerField(default=0, null=True, blank=True)
     training_goal = models.TextField(default=None, null=True, blank=True)
     place = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True, blank=True)
 
-
+    def __str__(self):
+        return "{0}: {1}".format(self.id, self.name)
 class Dnevnik(models.Model):
     date = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(UserBot, on_delete=models.CASCADE)
-    training = models.ManyToManyField(Training)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    trainings = models.ManyToManyField(Training)
 
     def __str__(self):
         return "{0}: {1} , {2}".format(self.id, self.user.name, self.date)

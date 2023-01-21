@@ -4,7 +4,7 @@
 <body>
     <div class="content">
         <p>Имя пользователя: {{ user.name }}</p>
-        <h1>{{user.first_name}}</h1>
+        <h1>{{ user.first_name }}</h1>
         <p>Возраст: {{user.age}}</p>
         <p>Вес: {{user.weight}}</p>
         <p>Рост: {{user.height}}</p>
@@ -13,6 +13,17 @@
         <p>Цель: {{user.training_goal}}</p>
         <p>Место: {{user.place}}</p>
         <p>Дневник тренировок: </p>
+        {% if dnevniks %}
+<h1>{{ dnevniks.name }}</h1>
+            {% for dnevnik in dnevniks %}
+        <h1>{{ dnevnik.date }}</h1>
+
+            {% for training in dnevnik.trainings.all %}
+                <h2> {{ training.name }}</h2>
+        {% endfor %}
+        {% endfor %}
+        {% endif %}
+
     </div>
     
 </body>
