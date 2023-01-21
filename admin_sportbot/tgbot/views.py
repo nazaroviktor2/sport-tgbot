@@ -3,7 +3,7 @@ from tgbot.models import User, Dnevnik, Place
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # Create your views here.
-USERS_ON_PAGE = 20
+USERS_ON_PAGE = 5
 
 muscle_groups = {
     1: "Спина",
