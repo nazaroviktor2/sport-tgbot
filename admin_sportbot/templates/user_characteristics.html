@@ -12,16 +12,17 @@
         <p>Уровень: {{user.lvl}}</p>
         <p>Цель: {{user.training_goal}}</p>
         <p>Место: {{user.place}}</p>
-        <p>Дневник тренировок: </p>
         {% if dnevniks %}
-<h1>{{ dnevniks.name }}</h1>
+            <p>Дневник тренировок: </p>
             {% for dnevnik in dnevniks %}
-        <h1>{{ dnevnik.date }}</h1>
+                <p style="color: chartreuse; font-size: 30px;">{{ dnevnik.date }}</p>
 
-            {% for training in dnevnik.trainings.all %}
-                <h2> {{ training.name }}</h2>
-        {% endfor %}
-        {% endfor %}
+                {% for training in dnevnik.trainings.all %}
+                    <p style="color: lightcoral; font-size: 25px;">{{ training.name }}</p>
+                 {% endfor %}
+            {% endfor %}
+        {% else %}
+        <p>Пользователь пока не тренировался!</p>
         {% endif %}
 
     </div>
