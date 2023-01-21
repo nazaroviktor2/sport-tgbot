@@ -15,10 +15,10 @@
         {% if dnevniks %}
             <p>Дневник тренировок: </p>
             {% for dnevnik in dnevniks %}
-                <p style="color: chartreuse;">{{ dnevnik.date }}</p>
+                <p style="color: chartreuse; font-size: 30px;">{{ dnevnik.date }}</p>
 
                 {% for training in dnevnik.trainings.all %}
-                    <p style="color: lightcoral;">{{ training.name }}</p>
+                    <p style="color: lightcoral; font-size: 25px;">{{ training.name }}</p>
                  {% endfor %}
             {% endfor %}
         {% else %}
