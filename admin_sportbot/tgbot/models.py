@@ -52,10 +52,19 @@ class User(models.Model):
 
     def __str__(self):
         return "{0}: {1}".format(self.id, self.name)
+
+
 class Dnevnik(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    trainings = models.ManyToManyField(Training)
+    trainings = models.ManyToManyField(Training, through="Dnevnik_trainings")
 
     def __str__(self):
         return "{0}: {1} , {2}".format(self.id, self.user.name, self.date)
+
+
+class Dnevnik_trainings(models.Model):
+    dnevnik = models.ForeignKey(Dnevnik, on_delete=models.CASCADE)
+    training = models.ForeignKey(Training, on_delete=models.CASCADE)
+    start_training = models.DateTimeField(auto_now_add=True)
+    end_training = models.DateTimeField()
