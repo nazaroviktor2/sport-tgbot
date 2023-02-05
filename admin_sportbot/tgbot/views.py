@@ -78,3 +78,4 @@ def about_user(request):
     dnevniks = Dnevnik.objects.filter(user=request.GET.get("id")).order_by('-id')
 
     return render(request, "user_characteristics.html", {"user": user, "dnevniks": dnevniks})
+

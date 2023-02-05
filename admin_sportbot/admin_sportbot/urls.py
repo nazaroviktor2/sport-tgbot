@@ -29,7 +29,6 @@ urlpatterns = [
     path("", home_page, name='home'),
     path("add_training", add_training, name='add_training'),
     path("index", TemplateView.as_view(template_name='index.html'), name='index'),
-    path("statistics", TemplateView.as_view(template_name='statistics.html'), name='statistics'),
     path("users", users_page, name='users'),
     path("user_characteristics", about_user, name='user_characteristics'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
