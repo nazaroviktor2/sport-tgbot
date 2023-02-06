@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Training bot</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./static/styles/base.css">
 </head>
 <body>
-    <div style="text-align: center;">
-        <button onclick="document.location='index'"  class="button-89" role="button">На главную</button>
-        <button onclick="document.location='add_training'" class="button-89" role="button">Добавить упражнения</button>
-        <button onclick="document.location='users'" class="button-89" role="button">Просмотреть пользователей</button>
-        <button onclick="document.location='statistics'" class="button-89" role="button">Просмотреть статистику</button>
-    </div>
+  
+    <header>
+        <nav>
+            <ul class="topmenu">
+              <li style="width: 220px;"><a href="index">Главная</a></li>
+              <li style="width: 220px; text-align: center;"><a href="" class="submenu-link">Упражнения</a>
+                <ul class="submenu">
+                  <li><a href="add_training">Добавить</a></li>
+                  <li><a href="trainings">Просмотреть</a></li>
+                </ul>
+              </li>
+              <li style="width: 220px;"><a style="padding: 0 auto;" href="users">Пользователи</a></li>
+            </ul>
+        </nav>
+    </header>
     {% block content %}
     {% endblock %}
 </body>

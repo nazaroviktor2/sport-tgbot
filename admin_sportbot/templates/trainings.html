@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    })
+</script>
+<body>
+    <style>
+        .container_for_trainings{
+            margin: 15px auto;
+            width: 500px;
+            height: 250px;
+            text-align: center;
+            border-radius: .25rem;
+            padding: 15px;
+            background-color: #fff; /* Цвет фона */
+            border-radius: 8px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, .1);
+        }
+        .inline{
+            display:inline-block;
+        }
+        .p_n{
+            padding: 20px;
+        }
+    </style>
+    {% for training in trainings %}
+        <div class="container_for_trainings">
+            <p>{{training.name}}</p>
+            <p>{{training.description}}</p>
+            {% for place in training.places.all %}
+            <div class="inline">
+                <p>{{place}}</p>
+            </div>
+            {% endfor %}
+            <div style="display: flex; justify-content: center; margin-top: -20px;">
+                <p class="p_n">{{training.gender}}</p>
+                <p class="p_n">{{training.lvl}}</p> 
+                <p class="p_n">{{training.type}}</p>
+                <p class="p_n">{{training.muscle_group}}</p>
+            </div>
+            {% comment %} <form method="post" >
+                {% csrf_token %} {% endcomment %}
+                <button onclick="deleteTraining({{ training.id }})"; class="button-89" style="height: 50px; font-size: 16px; position: relative; left: 170px; bottom: 20px;">Удалить</button>
+        </div>
+    {% endfor %}
+</body>
+<script>
+    function deleteTraining(id) {
+
+
+        fetch('{{ request.get_full_path }}/', {
+                   method: "POST",
+                   body:id,
+                   headers: { "X-CSRFToken": '{{ csrf_token }}',"Name":"Delete"},
+               })
+                 .then(response => {
+
+                 window.location.href = '{{ request.get_full_path }}/'})
+               .catch(err => alert(err));
+
+
+        };
+</script>
+{% endblock %}

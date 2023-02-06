@@ -2,7 +2,7 @@
 .button-89 {
     --b: 3px;   /* border thickness */
     --s: .45em; /* size of the corner */
-    --color: #fff;
+    --color: rgb(60, 60, 59);
     margin: 5px;
     width: auto;
     padding: calc(.5em + var(--s)) calc(.9em + var(--s));
@@ -29,19 +29,16 @@
   
   .button-89:active {
     background: var(--color);
-    color: #111;
+    color: #fff;
   }
 body{
-    background: #373737;
+  background: rgb(235, 235, 211);
+  color: rgb(60, 60, 59);
 }
-.img_cont{
-    margin-top: 5%;
-    margin-left: -0.4%;
-    text-align: center;
-}
+
 .content{
     margin-top: 3%;
-    color: #fff;
+    color: rgb(60, 60, 59);
     text-align: center;
     font-size: 40px;
 }
@@ -50,4 +47,91 @@ body{
     color: #fff;
     text-align: center;
     font-size: 40px;
+}
+
+* { box-sizing: border-box; }
+header {
+background: white;
+text-align: center;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+header a {
+text-decoration: none;
+outline: none;
+display: block;
+transition: .3s ease-in-out;
+}
+.a{
+    width: auto;
+}
+nav {
+display: table;
+margin: 0 auto;
+}
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+}
+.topmenu:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.topmenu > li {
+  width: 30%;
+  float: left;
+  position: relative;
+  font-family: 'Open Sans', sans-serif;
+}
+.topmenu > li > a {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #404040;
+  padding: 15px 30px;
+}
+.topmenu li a:hover { color: #D5B45B; }
+.submenu-link:after {
+  content: "";
+  font-family: "FontAwesome";
+  color: inherit;
+  margin-left: 10px;
+}
+
+.submenu {
+  background: rgb(60, 60, 59);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 5;
+  width: 220px;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: 0 0;
+  transition: .5s ease-in-out;
+}
+.submenu a {
+  color: white;
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.submenu li:last-child a { border-bottom: none; }
+.topmenu > li:hover .submenu {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.page-link{
+  color: rgb(245, 213, 71);
+}
+
+.page-item.active .page-link {
+  background-color: rgb(245, 213, 71);
+  border-color: rgb(245, 213, 71);
+}
+.page-link:hover {
+  color: rgb(245, 213, 71);
 }

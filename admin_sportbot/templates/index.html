@@ -1,9 +1,12 @@
  {% extends 'base.html' %}
  {% block content %}
  <body>
+
     {% load static %}
-     <div class="img_cont">
-         <img style="width: 100%;" src="./static/images/main.png" alt="">
-     </div>
+    <div class="content">
+        <p>Количество пользователей за сегодня: </p>
+        <p>Количество пользователей в боте: {{count_all}}</p>
+    </div>
+    
  </body>
 {% endblock %}
