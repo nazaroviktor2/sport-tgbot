@@ -89,8 +89,6 @@ def view_trainigs(request):
 
 
 def delete_training(request):
-    print(request.method)
-    print(request.headers.get("Name"))
     if  request.method == "POST":
         name = request.headers.get("Name")
         if name == "Delete":
