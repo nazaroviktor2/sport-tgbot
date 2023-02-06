@@ -26,7 +26,6 @@ class Training(models.Model):
         ("Функциональная", "Функциональная"),
         ("Кардио", "Кардио")
     ]
-    id = models.IntegerField(primary_key=True, null=False)
     name = models.TextField()
     lvl = models.IntegerField(default=0, null=False)
     gender = models.CharField(choices=[("M", "Male"), ("F", "Female"), ("M/F", "Male/Female")], max_length=3)
