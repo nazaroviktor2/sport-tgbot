@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from tgbot.models import User, Dnevnik, Place, Training
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -26,7 +26,9 @@ gender = {
 
 
 def home_page(request):
-    return render(request, "index.html")
+    count_all = User.objects.all().count()
+    return render(request, "index.html", {"count_all":count_all})
+
 
 
 def add_training(request):
@@ -79,3 +81,20 @@ def about_user(request):
 
     return render(request, "user_characteristics.html", {"user": user, "dnevniks": dnevniks})
 
+
+
+def view_trainigs(request):
+    trainings = Training.objects.all()
+    return render(request, "trainings.html", {"trainings": trainings})
+
+
+def delete_training(request):
+    print(request.method)
+    print(request.headers.get("Name"))
+    if  request.method == "POST":
+        name = request.headers.get("Name")
+        if name == "Delete":
+            id = int(request.body)
+            Training.objects.get(id=id).delete()
+    return redirect("trainings")
+ 

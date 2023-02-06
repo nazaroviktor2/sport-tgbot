@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.routers import SimpleRouter
 
-from tgbot.views import home_page, users_page, about_user, add_training
+from tgbot.views import home_page, users_page, about_user, add_training, view_trainigs, delete_training
 from django.views.generic.base import TemplateView
 router = SimpleRouter()
 
@@ -28,9 +28,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", home_page, name='home'),
     path("add_training", add_training, name='add_training'),
-    path("index", TemplateView.as_view(template_name='index.html'), name='index'),
+    path("index", home_page, name='index'),
     path("users", users_page, name='users'),
     path("user_characteristics", about_user, name='user_characteristics'),
+    path("trainings",view_trainigs, name='trainings'),
+    path("trainings/",delete_training, name='trainings_del')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += router.urls
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

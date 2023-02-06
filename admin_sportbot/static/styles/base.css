@@ -2,7 +2,7 @@
 .button-89 {
     --b: 3px;   /* border thickness */
     --s: .45em; /* size of the corner */
-    --color: rgb(60, 60, 59);;
+    --color: rgb(60, 60, 59);
     margin: 5px;
     width: auto;
     padding: calc(.5em + var(--s)) calc(.9em + var(--s));
