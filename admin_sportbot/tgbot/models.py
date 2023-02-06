@@ -67,7 +67,7 @@ class Dnevnik(models.Model):
 class Dnevnik_trainings(models.Model):
     dnevnik = models.ForeignKey(Dnevnik, on_delete=models.CASCADE)
     training = models.ForeignKey(Training, on_delete=models.CASCADE)
-    start_training = models.DateTimeField(auto_now_add=True)
-    end_training = models.DateTimeField()
+    start_training = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    end_training = models.DateTimeField(null=True, blank=True)
 
 
