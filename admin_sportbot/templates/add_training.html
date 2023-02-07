@@ -14,40 +14,40 @@
             <label>Выберите уровень: </label> 
         </div>
         <select name="user_lvl" id="user_lvl" multiple required>
-            <option value="1">1</option>
-            <option value="2">2</option>
+            <option value="1" selected="selected">1</option>
+            <option value="2" selected="selected">2</option>
         </select>
         <div class="rows">
             <label>Выберите пол: </label>
         </div>
         <select name="user_gender" id="user_gender" multiple required>
      {% for val, name in  gender.items %}
-            <option value="{{ val }}">{{ name }}</option>
+            <option value="{{ val }}" selected="selected">{{ name }}</option>
             {% endfor %}
         </select>
         <div class="rows">
             <label>Выберите тип тренировки: </label>
         </div>
         <select name="user_type_training" id="user_type_training" multiple required>
-            <option value="1">Быстрая</option>
-            <option value="2">Персональная</option>
+            <option value="1" selected="selected">Быстрая</option>
+            <option value="2" >Персональная</option>
         </select>
         <div class="rows">
             <label>Выберите место: </label>
         </div>
         <select name="places" id="places" multiple required="required">
             {% if places %}
-            {% for place in places %}
-            <option value="{{ place.id }}"> {{ place.name }}</option>
-            {% endfor %}
+                {% for place in places %}
+                    <option value="{{ place.id }}" selected="selected"> {{ place.name }}</option>
+                {% endfor %}
             {% endif %}
         </select>
         <div class="rows">
             <label>Выберите группу мышц: </label>
         </div>
         <select name="user_muscles" id="user_muscles" multiple required>
-                {% for val, name in  muscle_groups.items %}
-            <option value="{{ val }}">{{ name }}</option>
+            {% for val, name in  muscle_groups.items %}
+                <option value="{{ val }}">{{ name }}</option>
             {% endfor %}
         </select>
         <div style="text-align: center; margin-top: 1%;">

@@ -2,6 +2,19 @@
 {% load static %}
 {% block content %}
 <body>
+    <style>
+        .container_for_trainings{
+            margin: 15px auto;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            border-radius: .25rem;
+            padding: 15px;
+            background-color: #fff; /* Цвет фона */
+            border-radius: 8px;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, .1);
+        }
+    </style>
     <div class="content">
         <p>Имя пользователя: {{ user.name }}</p>
         <h1>{{ user.first_name }}</h1>
@@ -15,11 +28,12 @@
         {% if dnevniks %}
             <p>Дневник тренировок: </p>
             {% for dnevnik in dnevniks %}
-                <p style="color: chartreuse; font-size: 30px;">{{ dnevnik.date }}</p>
-
-                {% for training in dnevnik.trainings.all %}
-                    <p style="color: lightcoral; font-size: 25px;">{{ training.name }}</p>
-                 {% endfor %}
+                <div class="container_for_trainings">
+                    <p style="color: #EC5B5B; font-size: 30px;">{{ dnevnik.date }}</p>
+                    {% for training in dnevnik.trainings.all %}
+                        <p style="color: rgb(60, 60, 59); font-size: 25px;">{{ training.name }}</p>
+                    {% endfor %}
+                </div>
             {% endfor %}
         {% else %}
         <p>Пользователь пока не тренировался!</p>
